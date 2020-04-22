@@ -1,0 +1,23 @@
+first byte
+3 - add/write to stack - 
+2 - subtract/write to stack - (read value at position 3) * 8 + 50, (subtract it from the value at position 2) * 8 + 50, write to position 2
+1 - read/write to stack - (read value at position 2) * 8 + 50 , (write value at position 3) * 8 + 50 
+0 - write to stack - (value at position 2) * 8 + 50 next qword
+
+
+file write_to_stack.dat
+
+this file changes the return address at rsp + 43*8+50 to be a static 00000001400115A9 (exit process)
+
+
+file read_k32.dat
+
+this file reads the address of k32 at rsp + 2a8 and puts it at rsp + 50 + 2*8 
+places the string c:\%temp%\a.dll at rsp+50, pointer to this string is located at 3f
+
+
+LoadLibraryA located at 00007ffdc6b11c20
+k32 address we steal is 00007FFDC8963034
+
+
+difference is 00000000 01E51414
